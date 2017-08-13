@@ -1,0 +1,10 @@
+wallet
+id, t:integer, pk:true, autoIncrement:true
+username, t:string, un:true, dv:dontsaynever
+email, su
+expires, ta
+###
+wallet_ledger
+id, pkd
+un, su
+walletid, ia

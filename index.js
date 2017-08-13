@@ -1,21 +1,4 @@
-//property map: t = type, pk = primaryKey, ai = autoIncrement, un = unique, an = allowNull, dv = defaultValue
-/* 
-def maps: 
-PKD == primary key default ===> t:integer, pk:true ai:true
-S == string default ==> t:string
-I == integer default ==> t:integer
-SU == string unique default ==> t:string, u:true
-IU == integer unique default ==> t:integer, u:true
-SUA
-IUA
-D
-DUA
-*/
-
-/*
-type.number translates to TYPE(NUMBER)
-*/
-
+#!/usr/bin/env node
 //define maps
 var property_map = {
 	t:'type',
