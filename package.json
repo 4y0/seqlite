@@ -1,0 +1,26 @@
+{
+  "name": "seqlite",
+  "version": "0.0.0",
+  "description": "Scaffolder for sequelize models (Experimental)",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "seqlite": "index.js"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4y0/seqlite.git"
+  },
+  "keywords": [
+    "CLI"
+  ],
+  "author": "4y0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4y0/seqlite/issues"
+  },
+  "homepage": "https://github.com/4y0/seqlite#readme"
+}

@@ -1,0 +1,21 @@
+"use strict"
+module.exports = function (sequelize, DataTypes) {
+  var schema_definition = :schema_definition:;
+  var :schema_name: = sequelize.define(':schema_name:', schema_definition,{
+
+     timestamps: true,
+     paranoid: true,
+     underscored: false,
+     freezeTableName: true, 
+     classMethods:{ 
+
+      associate: function (models) {
+  
+      }
+
+
+     }
+  });
+
+  return :schema_name:;
+}
