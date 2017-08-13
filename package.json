@@ -1,6 +1,6 @@
 {
   "name": "seqlite",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Scaffolder for sequelize models (Experimental)",
   "main": "index.js",
   "preferGlobal": true,
