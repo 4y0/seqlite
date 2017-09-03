@@ -95,12 +95,37 @@ function parse(def_string){
 }
 
 
+function parse_schema_name(schema_name){
+
+	var reg_ex = /\([a-zA-Z0-9_,]+\)/; //Regex to textract assocs
+	var assocs = schema_name.match(reg_ex);
+	var schema_name_extracted = schema_name.split('(')[0];
+	var assoc_string = "";
+	var result = "";
+
+	if(assocs && assocs[0]){
+		assoc_string = assocs[0];
+		assoc_string = assoc_string.replace(/\(|\)/g, '').split(",");
+
+		assoc_string
+		.forEach( (a_s) => {
+			result += schema_name_extracted + ".belongsTo(models."+a_s+"); \n"
+		})
+	}
+
+	return {
+		associations:result,
+		schema_name:schema_name_extracted
+	}
+
+}
+
 
 function process_shit(schema_def){
 
 	var schema = {};
 	var schema_def_tokens = schema_def.split('\n');
-	var schema_name = schema_def_tokens[0];
+	var schema_name_info = parse_schema_name(schema_def_tokens[0]);
 	var schema_attrib_defs = schema_def_tokens.slice(1);
 
 	schema_attrib_defs
@@ -112,7 +137,8 @@ function process_shit(schema_def){
 	});
 
 	return {
-		schema_name:schema_name,
+		schema_name:schema_name_info.schema_name,
+		associations:schema_name_info.associations,
 		schema_attrib_def:schema,
 		schema_attrib_def_normalized:JSON.stringify(schema, null, '\t').replace(/("DataTypes\.([a-zA-Z0-9]+)?")/g, "DataTypes.$2")
 	}
@@ -135,7 +161,7 @@ function init(){
 	schema_defs.forEach( function(sdef) {
 
 		var result = (process_shit(sdef.trim()));
-		var file = template.replace(/:schema_name:/g, result.schema_name).replace(/:schema_definition:/, result.schema_attrib_def_normalized);
+		var file = template.replace(/:schema_name:/g, result.schema_name).replace(/:associations:/, result.associations).replace(/:schema_definition:/, result.schema_attrib_def_normalized);
 
 		console.log("Creating schema: ", result.schema_name);
 		fs.writeFileSync(result.schema_name + ".js", file);
@@ -146,6 +172,7 @@ function init(){
 }
 
 init();
+//console.log(parse_schema_name("wallet"));
 
 
 

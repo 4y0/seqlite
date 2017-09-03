@@ -4,7 +4,6 @@ username, t:string, un:true, dv:dontsaynever
 email, su
 expires, ta
 ###
-wallet_ledger
+wallet_ledger(walet)
 id, pkd
 un, su
-walletid, ia
