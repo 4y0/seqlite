@@ -45,6 +45,10 @@ function resolve_property(pstring){
 			prop_suffix = "DataTypes.";	
 		} 
 
+		if(prop_typ === "true"){
+			prop_typ = true;
+			resolved_property[resolve_key] = prop_typ;
+		}else
 		resolved_property[resolve_key] = prop_suffix + prop_typ;
 
 	});
